@@ -34,17 +34,27 @@ def parse_json(path: str | Path) -> dict:
         "roles": [d["role"] for d in devices],
     }
 
+
 def parse_yaml(path: str | Path) -> dict:
     """Return name, approved, duration_minutes, devices, and action from YAML."""
-    # Placeholder implementation for YAML parser
-    raise NotImplementedError("YAML parser not yet implemented")
-
+    with open(path) as f:
+        data = yaml.safe_load(f)
+    window = data["window"]
+    return {
+        "name": window["name"],
+        "approved": window["approved"],
+        "duration_minutes": window["duration_minutes"],
+        "devices": data["devices"],
+        "action": data["action"],
+    }
 
 def build_summary(xml_path: str | Path, json_path: str | Path, yaml_path: str | Path) -> dict:
     """Combine the three parser results into one dictionary."""
-    # Placeholder implementation for summary builder
-    raise NotImplementedError("Summary builder not yet implemented")
-
+    return {
+        "xml": parse_xml(xml_path),
+        "json": parse_json(json_path),
+        "yaml": parse_yaml(yaml_path),
+    }
 
 if __name__ == "__main__":
     base = Path(__file__).resolve().parent
