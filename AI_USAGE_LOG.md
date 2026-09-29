@@ -50,7 +50,8 @@ Unit tests passed for YAML parsing and integration. Manual inspection confirmed 
 ---
 
 ## Controlled merge-conflict line
-Validation status: PENDING
+
+Validation status: AI reviewed
 
 ---
 
