@@ -1,0 +1,9 @@
+*   3d0c54b (HEAD -> main, origin/main) merge: reconcile AI and test validation notes
+|\  
+| * ff9bd32 (origin/docs/ai-note, docs/ai-note) docs: record AI review status
+| * c4bf2b7 (origin/feature/data-parsers, feature/data-parsers) feat: implement YAML parser with safe_load integration
+| * 1a47503 feat: implement JSON parser with enabled device hostnames
+* | 3116c31 docs: record test validation status
+|/  
+* 3d4dc8b initial commit
+* 75d1daf Chore: add parser lab starter files
