@@ -1,11 +1,10 @@
 # AI Usage and Validation Log
 
-Student name: James Gabriel B. Boo
-Section: TA31
-AI tool used: Gemini
+Student name: James Gabriel B. Boo  
+Section: TA31  
+AI tool used: Gemini  
 
-## Entry 1 - XML parsing
-
+## Entry 1 – XML parsing
 Prompt:
 I am completing an authorized classroom Python lab. Review this function stub and the supplied fictional XML structure. Recommend an implementation that returns exactly the keys described in the docstring. Explain namespace handling, data types, error risks, and each library function used.
 
@@ -18,8 +17,9 @@ Validation evidence:
 Unit tests passed for XML parsing. Manual inspection confirmed the output:
 {"default_operation": "merge", "test_option": "test-then-set"}
 
-## Entry 2 - JSON parsing
+---
 
+## Entry 2 – JSON parsing
 Prompt:
 I am completing an authorized classroom Python lab. Review this function stub and the supplied fictional JSON structure. Recommend an implementation that returns exactly the keys described in the docstring.
 
@@ -32,9 +32,9 @@ Validation evidence:
 Unit tests passed for JSON parsing. Manual inspection confirmed the output:
 {"site": "FEU-Tech-Lab", "device_count": 3, "enabled_devices": 2, "roles": ["router", "switch", "wireless-ap"]}
 
+---
 
-## Entry 3 - YAML parsing and integration
-
+## Entry 3 – YAML parsing and integration
 Prompt:
 I am completing an authorized classroom Python lab. Review this function stub and the supplied fictional YAML structure. Recommend an implementation that returns exactly the keys described in the docstring.
 
@@ -47,10 +47,11 @@ Validation evidence:
 Unit tests passed for YAML parsing and integration. Manual inspection confirmed the output:
 {"name": "Saturday-Lab", "approved": true, "duration_minutes": 90, "devices": ["R1", "SW1"], "action": "validate-configuration"}
 
+---
+
 ## Controlled merge-conflict line
 
-Validation status: Tests passed
+Validation status: AI reviewed and tests passed
 
 ## Final reflection
-
-One AI suggestion I modified was in the JSON parser. The AI initially recommended returning only the count of enabled devices, but I adjusted the implementation to also include the total device count and roles list. The evidence guiding this decision was the unit test expectations and the lab instructions, which required all four fields (site, device_count, enabled_devices, roles). This shows the importance of validating AI output against both the rubric and the test res
+One AI suggestion I modified was in the JSON parser. The AI initially recommended returning only the count of enabled devices, but I adjusted the implementation to also include the total device count and roles list. The evidence guiding this decision was the unit test expectations and the lab instructions, which required all four fields (site, device_count, enabled_devices, roles). This shows the importance of validating AI output against both the rubric and the test results.

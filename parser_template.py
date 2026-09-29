@@ -14,27 +14,47 @@ import yaml
 
 def parse_xml(path: str | Path) -> dict:
     """Return default_operation and test_option from the NETCONF-style XML."""
-    # TODO: parse the XML, handle its default namespace, and return two strings.
-    raise NotImplementedError("Complete parse_xml")
-
+    tree = ET.parse(path)
+    root = tree.getroot()
+    ns = {"nc": "urn:ietf:params:xml:ns:netconf:base:1.0"}
+    return {
+        "default_operation": root.findtext("nc:edit-config/nc:default-operation", namespaces=ns),
+        "test_option": root.findtext("nc:edit-config/nc:test-option", namespaces=ns),
+    }
 
 def parse_json(path: str | Path) -> dict:
     """Return site, device_count, enabled_devices, and roles from the JSON."""
-    # TODO: use json.load and derive the requested summary values.
-    raise NotImplementedError("Complete parse_json")
+    with open(path) as f:
+        data = json.load(f)
+    devices = data["devices"]
+    return {
+        "site": data["site"],
+        "device_count": len(devices),
+        "enabled_devices": [d["hostname"] for d in devices if d["enabled"]],
+        "roles": [d["role"] for d in devices],
+    }
 
 
 def parse_yaml(path: str | Path) -> dict:
     """Return name, approved, duration_minutes, devices, and action from YAML."""
-    # TODO: use yaml.safe_load and return the normalized maintenance summary.
-    raise NotImplementedError("Complete parse_yaml")
-
+    with open(path) as f:
+        data = yaml.safe_load(f)
+    window = data["window"]
+    return {
+        "name": window["name"],
+        "approved": window["approved"],
+        "duration_minutes": window["duration_minutes"],
+        "devices": data["devices"],
+        "action": data["action"],
+    }
 
 def build_summary(xml_path: str | Path, json_path: str | Path, yaml_path: str | Path) -> dict:
     """Combine the three parser results into one dictionary."""
-    # TODO: call the three parser functions and preserve the keys below.
-    raise NotImplementedError("Complete build_summary")
-
+    return {
+        "xml": parse_xml(xml_path),
+        "json": parse_json(json_path),
+        "yaml": parse_yaml(yaml_path),
+    }
 
 if __name__ == "__main__":
     base = Path(__file__).resolve().parent
